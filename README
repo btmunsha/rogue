@@ -12,7 +12,7 @@ easier:
 Linux compilation instructions
 ==============================
 
-Make sure GNU make, GCC and ncurses is installed. Edit config.mk to match
-your settings, and run 'make' to build the rouge executable and 'make install'
-to install it to your prefix.
+Make sure GNU make, GCC and ncurses is installed. Edit config.mk and Makefile to
+match your settings, and run 'make' to build the rouge executable and
+'make install' to install it to your prefix.
 

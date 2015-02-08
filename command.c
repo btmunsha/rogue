@@ -421,7 +421,7 @@ over:
 			}
                         when CTRL('S'):
 			{
-			    msg("Programmers only: You're now Wally the Wonder Badger!");
+			    msg("You're now Wally the Wonder Badger!");
 
 			    int i;
 			    THING *obj;
