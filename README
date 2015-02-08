@@ -1,0 +1,18 @@
+About
+=====
+
+This is a slighlty modified version of Rogue 5.4.4 from the roguelike
+restoration project. A few changes were made to make developing Rogue AI
+easier:
+
+	Linux build system replaced.
+	Wizard mode fixed, enabled and extended.
+	Some top screen message bugs were fixed.
+
+Linux compilation instructions
+==============================
+
+Make sure GNU make, GCC and ncurses is installed. Edit config.mk to match
+your settings, and run 'make' to build the rouge executable and 'make install'
+to install it to your prefix.
+

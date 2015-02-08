@@ -1,0 +1,8 @@
+Compile under Visual Studio.
+Compile with vtcurses.
+Remove dependancies other then cstdlib and curses.
+Comple static version.
+
+bugs:
+When throwing an item thats not a weapon, the wrong name
+is displayed.
