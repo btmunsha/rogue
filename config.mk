@@ -1,7 +1,7 @@
 CC=gcc
 AR=ar
 CFLAGS=-O3 -march=native
-PREFIX=/home/brandon/local
+PREFIX=/usr/bin/
 
 INCLUDE=-I${PREFIX}/include
 

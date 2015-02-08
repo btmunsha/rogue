@@ -639,6 +639,36 @@ nameit(THING *obj, char *type, char *which, struct obj_info *op,
 }
 
 /*
+ * nameit2:
+ *	Give the proper name to a potion, stick, or ring
+ *      Inserts it into a given buffer.
+ */
+
+void
+nameit2(THING *obj, char *type, char *which, struct obj_info *op,
+    char *(*prfunc)(THING *), char* prbuf)
+{
+    char *pb;
+
+    if (op->oi_know || op->oi_guess)
+    {
+	if (obj->o_count == 1)
+	    sprintf(prbuf, "A %s ", type);
+	else
+	    sprintf(prbuf, "%d %ss ", obj->o_count, type);
+	pb = &prbuf[strlen(prbuf)];
+	if (op->oi_know)
+	    sprintf(pb, "of %s%s(%s)", op->oi_name, (*prfunc)(obj), which);
+	else if (op->oi_guess)
+	    sprintf(pb, "called %s%s(%s)", op->oi_guess, (*prfunc)(obj), which);
+    }
+    else if (obj->o_count == 1)
+	sprintf(prbuf, "A%s %s %s", vowelstr(which), which, type);
+    else
+	sprintf(prbuf, "%d %s %ss", obj->o_count, which, type);
+}
+
+/*
  * nullstr:
  *	Return a pointer to a null-length string
  */

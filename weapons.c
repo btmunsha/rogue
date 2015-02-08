@@ -147,30 +147,52 @@ fall(THING *obj, bool pr)
 	    endmsg();
 	    has_hit = FALSE;
 	}
-	/* BUG: This does not work if we're not throwing a weapon. */
-	/*which = obj->o_which;
-	char *n;
+
+	int which = obj->o_which;
+	char buf[80] = {0};
+        struct obj_info *op;
 	switch(obj->o_type) {
 	case POTION:
+            nameit2(obj, "potion", p_colors[which], &pot_info[which], nullstr, buf);
             break;
 	case RING:
+            nameit2(obj, "ring", r_stones[which], &ring_info[which], ring_num, buf);
             break;
 	case STICK:
+	    nameit2(obj, ws_type[which], ws_made[which], &ws_info[which], charge_str, buf);
             break;
 	case SCROLL:
+            op = &scr_info[which];
+            if (op->oi_know)
+		sprintf(buf, "of %s", op->oi_name);
+	    else if (op->oi_guess)
+		sprintf(buf, "called %s", op->oi_guess);
+	    else
+		sprintf(buf, "titled '%s'", s_names[which]);
             break;
 	case FOOD:
+            if (which == 1)
+		if (obj->o_count == 1)
+		    sprintf(buf, "A%s %s", vowelstr(fruit), fruit);
+		else
+		    sprintf(buf, "%d %ss", obj->o_count, fruit);
+	    else
+		if (obj->o_count == 1)
+		    strcpy(buf, "Some food");
+		else
+		    sprintf(buf, "%d rations of food", obj->o_count);
             break;
 	case WEAPON:
-	    n = weap_info[obj->o_which].oi_name;
+	    sprintf(buf, "%s", weap_info[obj->o_which].oi_name);
             break;
 	case ARMOR:
+	    sprintf(buf, "%s", arm_info[obj->o_which].oi_name);
             break;
 	case AMULET:
-	    n = "The Amulet of Yendor";
+            sprintf(buf, "The Amulet of Yendor");
             break;
-	}*/
-	msg("the %s vanishes as it hits the ground", weap_info[obj->o_which].oi_name);
+	}
+	msg("the %s vanishes as it hits the ground", buf);
     }
     discard(obj);
 }
