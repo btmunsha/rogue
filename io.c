@@ -150,6 +150,8 @@ step_ok(int ch)
 char
 readchar()
 {
+    printf("\x1B,");
+
     char ch;
 
     ch = (char) md_readchar();
@@ -241,7 +243,7 @@ status()
 
 /*
  * wait_for
- *	Sit around until the guy types the right key
+ *	Sit around until the person types the right key
  */
 void
 wait_for(int ch)

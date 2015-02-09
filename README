@@ -8,6 +8,8 @@ easier:
 	Linux build system replaced.
 	Wizard mode fixed, enabled and extended.
 	Some top screen message bugs were fixed.
+	When rogue is waiting for an input, it prints the unused escape code
+	"Esc," so AI knows that a screen is loaded.
 
 Linux compilation instructions
 ==============================
