@@ -6,10 +6,11 @@ restoration project. A few changes were made to make developing Rogue AI
 easier:
 
 	Linux build system replaced.
-	Wizard mode fixed, enabled and extended.
+	Wizard mode fixed and extended.
 	Some top screen message bugs were fixed.
-	When rogue is waiting for an input, it prints the unused escape code
-	"Esc," so AI knows that a screen is loaded.
+	When rogue is waiting for an input, it prints "\x1B," to indicate
+	to AI that it's done drawing. Most terminal emulators should ignore
+	this escape code.
 
 Linux compilation instructions
 ==============================
