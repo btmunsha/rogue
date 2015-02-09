@@ -12,9 +12,12 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include <curses.h>
 #include <ctype.h>
 #include "rogue.h"
+
+int fist_time = TRUE;
 
 /*
  * command:
@@ -59,6 +62,11 @@ command()
 	move(hero.y, hero.x);
 	if (!((running || count) && jump))
 	    refresh();			/* Draw screen */
+	    if(fist_time) {
+		    printf("\x1B,");
+		    fflush(stdout);
+		    fist_time = FALSE;
+	    }
 	take = 0;
 	after = TRUE;
 	/*
